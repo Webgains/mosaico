@@ -44,7 +44,8 @@ var applyBindingOptions = function(options, ko) {
     var imgProcessorBackend = options.imgProcessorBackend ? options.imgProcessorBackend : './upload';
     var backEndMatch = imgProcessorBackend.match(/^(https?:\/\/[^\/]*\/).*$/);
     var srcMatch = src.match(/^(https?:\/\/[^\/]*\/).*$/);
-    if (backEndMatch === null || (srcMatch !== null && backEndMatch[1] == srcMatch[1])) {
+    // if we follow the else clause images disappear from the editor when "send" is clicked
+    if (true || backEndMatch === null || (srcMatch !== null && backEndMatch[1] == srcMatch[1])) {
       queryParamSeparator = imgProcessorBackend.indexOf('?') == -1 ? '?' : '&';
       return _appendUrlParameters(imgProcessorBackend, { src: src, method: method, params: width + "," + height });
     } else {
